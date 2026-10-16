@@ -76,6 +76,20 @@ export const VendorCard: React.FC<VendorCardProps> = ({
           {vendor.description}
         </p>
 
+        {/* Key Compliance & Security Features */}
+        {vendor.keyFeatures && vendor.keyFeatures.length > 0 && (
+          <div className="mt-2.5 flex flex-wrap gap-1.5">
+            {vendor.keyFeatures.map((feat) => (
+              <span
+                key={feat}
+                className="text-[11px] font-medium text-slate-600 bg-slate-100/90 px-2 py-0.5 rounded-md"
+              >
+                {feat}
+              </span>
+            ))}
+          </div>
+        )}
+
         {/* Compliance Badges Grid with Clear Status */}
         <div className="mt-4 pt-3.5 border-t border-slate-100">
           <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center gap-1">

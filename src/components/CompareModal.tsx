@@ -36,7 +36,9 @@ export const CompareModal: React.FC<CompareModalProps> = ({
       'GDPR DPA',
       'Auditor Name',
       'Last Audit Date',
-      'Encryption Standard'
+      'Encryption Standard',
+      'Data Residency',
+      'Key Security Features'
     ];
 
     const rows = vendors.map(v => [
@@ -51,7 +53,9 @@ export const CompareModal: React.FC<CompareModalProps> = ({
       v.gdprDPAAvailable ? 'Yes' : 'No',
       `"${v.auditorName}"`,
       `"${v.lastAuditDate}"`,
-      `"${v.encryptionStandard}"`
+      `"${v.encryptionStandard}"`,
+      `"${v.dataResidency.join(', ')}"`,
+      `"${v.keyFeatures ? v.keyFeatures.join(', ') : ''}"`
     ]);
 
     const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
@@ -193,6 +197,31 @@ export const CompareModal: React.FC<CompareModalProps> = ({
                     ))}
                   </tr>
 
+                  {/* Row: Key Security & Compliance Features */}
+                  <tr className="hover:bg-slate-50/50">
+                    <td className="p-3 font-semibold text-slate-900 bg-slate-50 sticky left-0">
+                      Key Features
+                    </td>
+                    {vendors.map(v => (
+                      <td key={v.id} className="p-3">
+                        {v.keyFeatures && v.keyFeatures.length > 0 ? (
+                          <div className="flex flex-wrap gap-1">
+                            {v.keyFeatures.map((feat) => (
+                              <span
+                                key={feat}
+                                className="text-[10px] font-medium text-slate-700 bg-slate-100 border border-slate-200/80 px-1.5 py-0.5 rounded-sm"
+                              >
+                                {feat}
+                              </span>
+                            ))}
+                          </div>
+                        ) : (
+                          <span className="text-slate-400 text-[11px]">—</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+
                   {/* Row: HIPAA BAA */}
                   <tr className="hover:bg-slate-50/50">
                     <td className="p-3 font-semibold text-slate-900 bg-slate-50 sticky left-0">
@@ -322,6 +351,27 @@ export const CompareModal: React.FC<CompareModalProps> = ({
                     {vendors.map(v => (
                       <td key={v.id} className="p-3 text-[11px] text-slate-600">
                         {v.encryptionStandard}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* Row: Data Residency */}
+                  <tr className="hover:bg-slate-50/50">
+                    <td className="p-3 font-semibold text-slate-900 bg-slate-50 sticky left-0">
+                      Data Residency
+                    </td>
+                    {vendors.map(v => (
+                      <td key={v.id} className="p-3 text-[11px] text-slate-700">
+                        <div className="flex flex-wrap gap-1">
+                          {v.dataResidency.map((region) => (
+                            <span
+                              key={region}
+                              className="inline-block bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded-xs font-mono text-[10px]"
+                            >
+                              {region}
+                            </span>
+                          ))}
+                        </div>
                       </td>
                     ))}
                   </tr>

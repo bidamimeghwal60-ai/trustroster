@@ -1,4 +1,4 @@
-export type ComplianceFrameworkType = 'HIPAA' | 'SOC2' | 'ISO27001' | 'GDPR' | 'PCIDSS' | 'FedRAMP';
+export type ComplianceFrameworkType = 'HIPAA' | 'SOC2' | 'ISO27001' | 'GDPR' | 'PCIDSS' | 'FedRAMP' | 'CCPA';
 
 export interface ComplianceBadge {
   type: ComplianceFrameworkType;
@@ -33,9 +33,12 @@ export interface Vendor {
   category: 
     | 'Cloud & Hosting'
     | 'Databases & Storage'
+    | 'Email & Messaging'
     | 'Email & SMS'
+    | 'Auth & Identity'
     | 'Authentication & IAM'
     | 'Observability & Security'
+    | 'AI & Machine Learning'
     | 'AI & Search'
     | 'Payments & Billing'
     | 'Developer Tools';
@@ -59,6 +62,7 @@ export interface Vendor {
   isoStandards: string[];
   gdprDPAAvailable: boolean;
   featured?: boolean;
+  keyFeatures?: string[];
 }
 
 export interface VendorFilterState {

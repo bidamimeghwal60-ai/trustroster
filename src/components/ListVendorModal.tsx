@@ -125,7 +125,8 @@ export const ListVendorModal: React.FC<ListVendorModalProps> = ({
       soc2Type: selectedFrameworks.includes('SOC2') ? 'Type II' : 'None',
       isoStandards: selectedFrameworks.includes('ISO27001') ? ['ISO 27001'] : [],
       gdprDPAAvailable: selectedFrameworks.includes('GDPR'),
-      featured: false
+      featured: false,
+      keyFeatures: ['Role-Based Access Control (RBAC)', 'Audit Logging', 'Automated Backups']
     };
 
     // Integration hook: simulate or send to admin notification endpoint

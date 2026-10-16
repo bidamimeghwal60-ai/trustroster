@@ -6,7 +6,7 @@ export const INITIAL_VENDORS: Vendor[] = [
     name: 'Supabase',
     slug: 'supabase',
     tagline: 'Open source Firebase alternative with Postgres database',
-    description: 'Managed PostgreSQL database platform with real-time subscriptions, authentication, storage, and auto-generated REST/GraphQL APIs.',
+    description: 'Managed PostgreSQL database platform with real-time subscriptions, Row Level Security, dedicated compute, Vault secrets, and point-in-time recovery.',
     category: 'Databases & Storage',
     brandColor: '#3ECF8E',
     logoBg: '#0f382a',
@@ -17,7 +17,7 @@ export const INITIAL_VENDORS: Vendor[] = [
         type: 'HIPAA',
         label: 'HIPAA (Signs BAA)',
         status: 'Verified',
-        details: 'Self-serve HIPAA Business Associate Agreement on Pro ($25/mo) and Enterprise tiers',
+        details: 'Self-serve HIPAA Business Associate Agreement on Pro ($25/mo), Team, and Enterprise tiers',
         verifiedAt: 'August 2025'
       },
       {
@@ -46,11 +46,11 @@ export const INITIAL_VENDORS: Vendor[] = [
     lastAuditDate: 'October 2025',
     reportPeriod: 'November 1, 2024 – October 31, 2025',
     minimumPlanForBAA: {
-      tierName: 'Pro Plan',
-      priceNote: '$25/mo + $10/mo project',
+      tierName: 'Freemium / Usage-based',
+      priceNote: 'Free tier available · BAA on Team ($599/mo) / Pro ($25/mo)',
       isSelfServe: true,
       baaIncluded: true,
-      details: 'You can execute the BAA electronically directly inside the Supabase Organization Settings dashboard without contacting sales.'
+      details: 'Freemium tier available. Self-serve HIPAA BAA can be executed electronically directly in workspace settings on Team & Enterprise plans.'
     },
     trustCenterUrl: 'https://trust.supabase.com',
     auditScopeSummary: 'Full scope evaluation of Supabase Managed Cloud including Postgres instances, Supabase Auth, Storage buckets, Edge Functions, and management console.',
@@ -84,14 +84,15 @@ export const INITIAL_VENDORS: Vendor[] = [
         requiresNDA: false
       }
     ],
-    dataResidency: ['US (East/West)', 'EU (Frankfurt, Ireland, London)', 'APAC (Singapore, Tokyo, Sydney)', 'South America (São Paulo)'],
-    encryptionStandard: 'AES-256 at rest (AWS KMS) · TLS 1.3 in transit',
+    dataResidency: ['Global (AWS regions worldwide)'],
+    encryptionStandard: 'AES-256 at rest, TLS 1.3 in transit',
     penTestFrequency: 'Annual third-party pen tests by Cure53',
     headquarters: 'San Francisco, CA, USA',
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001:2022'],
     gdprDPAAvailable: true,
-    featured: true
+    featured: true,
+    keyFeatures: ['Row Level Security (RLS)', 'Point-in-time recovery', 'dedicated compute', 'Vault secrets']
   },
   {
     id: 'postmark',
@@ -99,7 +100,7 @@ export const INITIAL_VENDORS: Vendor[] = [
     slug: 'postmark',
     tagline: 'Reliable transactional email delivery for web applications',
     description: 'High-deliverability transactional email service focused on lightning-fast delivery times, detailed message tracking, and high security.',
-    category: 'Email & SMS',
+    category: 'Email & Messaging',
     brandColor: '#FCCC00',
     logoBg: '#3a3310',
     logoTextColor: '#FCCC00',
@@ -169,7 +170,8 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: [],
     gdprDPAAvailable: true,
-    featured: true
+    featured: true,
+    keyFeatures: ['DMARC/DKIM auto-validation', '100% SLA uptime guarantee', '45-day message history retention', 'Encrypted webhook feeds']
   },
   {
     id: 'vercel',
@@ -254,7 +256,8 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001:2013', 'ISO 27701:2019'],
     gdprDPAAvailable: true,
-    featured: true
+    featured: true,
+    keyFeatures: ['Global Edge Network', 'Firewall / DDoS mitigation', 'Serverless compute isolation', 'Secret management']
   },
   {
     id: 'datadog',
@@ -290,6 +293,13 @@ export const INITIAL_VENDORS: Vendor[] = [
         verifiedAt: 'September 2025'
       },
       {
+        type: 'PCIDSS',
+        label: 'PCI-DSS',
+        status: 'Certified',
+        details: 'PCI-DSS Level 1 compliant log management and monitoring controls',
+        verifiedAt: 'August 2025'
+      },
+      {
         type: 'FedRAMP',
         label: 'FedRAMP Moderate',
         status: 'Certified',
@@ -301,11 +311,11 @@ export const INITIAL_VENDORS: Vendor[] = [
     lastAuditDate: 'November 2025',
     reportPeriod: 'November 1, 2024 – October 31, 2025',
     minimumPlanForBAA: {
-      tierName: 'Pro or Enterprise Plan',
-      priceNote: '$15/host/mo + HIPAA Add-on',
+      tierName: 'Usage-based / Enterprise',
+      priceNote: '$15/host/mo usage-based + HIPAA Add-on',
       isSelfServe: false,
       baaIncluded: true,
-      details: 'Available upon request through account representative. Requires configuration of sensitive data scanner and PHI scrubbing rules.'
+      details: 'Usage-based pricing with Enterprise BAA available upon request through account representative with sensitive data scanner activation.'
     },
     trustCenterUrl: 'https://trust.datadoghq.com',
     auditScopeSummary: 'Full Datadog multi-tenant cloud platform across AWS, Azure, and Google Cloud hosting regions, encompassing APM, Logs, and Infrastructure monitoring.',
@@ -332,14 +342,108 @@ export const INITIAL_VENDORS: Vendor[] = [
         requiresNDA: true
       }
     ],
-    dataResidency: ['US (US1, US3, US5)', 'EU (Frankfurt EU1)', 'Japan (AP1)', 'GovCloud (US-Gov)'],
-    encryptionStandard: 'FIPS 140-2 validated encryption · AES-256 · TLS 1.3',
+    dataResidency: ['US', 'EU', 'Japan'],
+    encryptionStandard: 'AES-256, TLS 1.2+',
     penTestFrequency: 'Continuous testing by NCC Group & Bishop Fox',
     headquarters: 'New York, NY, USA',
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001', 'ISO 27017', 'ISO 27018'],
     gdprDPAAvailable: true,
-    featured: true
+    featured: true,
+    keyFeatures: ['Cloud SIEM', 'Audit Trail monitoring', 'sensitive data scanner', 'granular RBAC']
+  },
+  {
+    id: 'okta',
+    name: 'Okta',
+    slug: 'okta',
+    tagline: 'Enterprise identity, single sign-on (SSO), and lifecycle management',
+    description: 'Enterprise workforce and customer identity cloud supporting SAML/SSO, adaptive multi-factor authentication, automated lifecycle management, and detailed audit logs.',
+    category: 'Auth & Identity',
+    brandColor: '#00297A',
+    logoBg: '#081735',
+    logoTextColor: '#38bdf8',
+    logoInitial: 'O',
+    complianceBadges: [
+      {
+        type: 'SOC2',
+        label: 'SOC 2 Type II',
+        status: 'Current',
+        details: 'Evaluated for Security, Availability, and Confidentiality across all cells',
+        verifiedAt: 'November 2025'
+      },
+      {
+        type: 'ISO27001',
+        label: 'ISO 27001',
+        status: 'Certified',
+        details: 'ISO/IEC 27001:2013, ISO 27017, and ISO 27018 cloud privacy certified',
+        verifiedAt: 'October 2025'
+      },
+      {
+        type: 'HIPAA',
+        label: 'HIPAA (Signs BAA)',
+        status: 'Verified',
+        details: 'Executes HIPAA Business Associate Agreement on Enterprise subscription agreements',
+        verifiedAt: 'September 2025'
+      },
+      {
+        type: 'FedRAMP',
+        label: 'FedRAMP Moderate',
+        status: 'Certified',
+        details: 'FedRAMP Moderate & DoD IL4 authorization for government workloads',
+        verifiedAt: 'May 2025'
+      },
+      {
+        type: 'GDPR',
+        label: 'GDPR Compliant',
+        status: 'Compliant',
+        details: 'Article 28 Data Processing Addendum with EU data boundary isolation',
+        verifiedAt: 'July 2025'
+      }
+    ],
+    auditorName: 'Schellman & Company',
+    lastAuditDate: 'November 2025',
+    reportPeriod: 'November 1, 2024 – October 31, 2025',
+    minimumPlanForBAA: {
+      tierName: 'Enterprise Quote / Paid',
+      priceNote: 'Custom Enterprise Contract',
+      isSelfServe: false,
+      baaIncluded: true,
+      details: 'HIPAA BAA execution requires an Okta Enterprise Subscription agreement with HIPAA Cell isolation and enhanced audit logging.'
+    },
+    trustCenterUrl: 'https://trust.okta.com',
+    auditScopeSummary: 'Full scope evaluation of Okta Identity Cloud, Workforce Identity, Customer Identity (CIAM), Universal Directory, and Admin Management Console.',
+    securityPackDocuments: [
+      {
+        id: 'okta-soc2-type2',
+        title: 'Okta SOC 2 Type II Audit Report (Schellman)',
+        description: 'Comprehensive auditor examination covering all production cells.',
+        fileType: 'PDF (4.8 MB)',
+        requiresNDA: true
+      },
+      {
+        id: 'okta-hipaa-attestation',
+        title: 'HIPAA Compliance Attestation Letter',
+        description: 'Independent verification of HIPAA Security and Privacy Rule controls.',
+        fileType: 'PDF (410 KB)',
+        requiresNDA: true
+      },
+      {
+        id: 'okta-iso-cert',
+        title: 'ISO 27001 / 27017 / 27018 Certificate Package',
+        description: 'Registrar certificate bundle issued by ANAB accredited body.',
+        fileType: 'PDF (520 KB)',
+        requiresNDA: false
+      }
+    ],
+    dataResidency: ['US', 'EU', 'APAC'],
+    encryptionStandard: 'AES-256 at rest, TLS 1.3 in transit',
+    penTestFrequency: 'Annual third-party pen tests by Schellman & NCC Group',
+    headquarters: 'San Francisco, CA, USA',
+    soc2Type: 'Type II',
+    isoStandards: ['ISO 27001', 'ISO 27017', 'ISO 27018'],
+    gdprDPAAvailable: true,
+    featured: true,
+    keyFeatures: ['SAML/SSO', 'Multi-Factor Authentication', 'Lifecycle Management', 'Detailed Audit Logs']
   },
   {
     id: 'auth0',
@@ -347,7 +451,7 @@ export const INITIAL_VENDORS: Vendor[] = [
     slug: 'auth0',
     tagline: 'Enterprise customer identity, SSO, and multi-factor authentication',
     description: 'Universal identity platform supporting OAuth 2.0, OpenID Connect, SAML single sign-on, passwordless auth, and adaptive MFA.',
-    category: 'Authentication & IAM',
+    category: 'Auth & Identity',
     brandColor: '#EB5424',
     logoBg: '#3d160a',
     logoTextColor: '#EB5424',
@@ -424,7 +528,8 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001', 'ISO 27018'],
     gdprDPAAvailable: true,
-    featured: true
+    featured: true,
+    keyFeatures: ['Universal Login', 'Anomaly detection & bot protection', 'Adaptive MFA', 'Custom database scripts']
   },
   {
     id: 'render',
@@ -509,7 +614,8 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001:2022'],
     gdprDPAAvailable: true,
-    featured: false
+    featured: false,
+    keyFeatures: ['Automated TLS certificates', 'Private networking', 'DDoS protection', 'Zero-downtime deploys']
   },
   {
     id: 'twilio',
@@ -517,7 +623,7 @@ export const INITIAL_VENDORS: Vendor[] = [
     slug: 'twilio',
     tagline: 'Global communications APIs for SMS, voice, video, and customer messaging',
     description: 'Programmable communications platform providing telecom connectivity, SMS gateways, WhatsApp business messaging, and WebRTC voice.',
-    category: 'Email & SMS',
+    category: 'Email & Messaging',
     brandColor: '#F22F46',
     logoBg: '#380a10',
     logoTextColor: '#F22F46',
@@ -594,7 +700,8 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001', 'ISO 27701'],
     gdprDPAAvailable: true,
-    featured: false
+    featured: false,
+    keyFeatures: ['HIPAA eligible SMS', 'End-to-end event streams', 'Encrypted voice recordings', 'Carrier-grade compliance']
   },
   {
     id: 'snowflake',
@@ -679,7 +786,8 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001', 'ISO 27017', 'ISO 27018', 'ISO 22301'],
     gdprDPAAvailable: true,
-    featured: true
+    featured: true,
+    keyFeatures: ['Tri-Secret Secure key management', 'Dynamic data masking', 'Row access policies', 'Role-based access control (RBAC)']
   },
   {
     id: 'pinecone',
@@ -687,7 +795,7 @@ export const INITIAL_VENDORS: Vendor[] = [
     slug: 'pinecone',
     tagline: 'Vector database for generative AI, semantic search, and RAG pipelines',
     description: 'Serverless vector database platform purpose-built for fast approximate nearest neighbor search over high-dimensional embeddings.',
-    category: 'AI & Search',
+    category: 'AI & Machine Learning',
     brandColor: '#000000',
     logoBg: '#1e293b',
     logoTextColor: '#38bdf8',
@@ -757,7 +865,94 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001:2022'],
     gdprDPAAvailable: true,
-    featured: false
+    featured: false,
+    keyFeatures: ['Approximate Nearest Neighbor (ANN)', 'Serverless metadata filtering', 'Hybrid sparse/dense search']
+  },
+  {
+    id: 'openai',
+    name: 'OpenAI',
+    slug: 'openai',
+    tagline: 'Frontier AI developer platform, GPT-4o models, and enterprise API infrastructure',
+    description: 'Enterprise AI platform offering GPT-4o, embeddings, and reasoning models with Zero Data Retention, enterprise admin controls, and audit logging.',
+    category: 'AI & Machine Learning',
+    brandColor: '#10A37F',
+    logoBg: '#04271e',
+    logoTextColor: '#10A37F',
+    logoInitial: '✦',
+    complianceBadges: [
+      {
+        type: 'SOC2',
+        label: 'SOC 2 Type II',
+        status: 'Current',
+        details: 'Evaluated for Security, Availability, and Confidentiality trust services criteria',
+        verifiedAt: 'December 2025'
+      },
+      {
+        type: 'GDPR',
+        label: 'GDPR Compliant',
+        status: 'Compliant',
+        details: 'Standard Contractual Clauses (SCC) and automated Data Processing Addendum',
+        verifiedAt: 'October 2025'
+      },
+      {
+        type: 'CCPA',
+        label: 'CCPA / CPRA',
+        status: 'Compliant',
+        details: 'Compliant with California Consumer Privacy Act and service provider provisions',
+        verifiedAt: 'August 2025'
+      },
+      {
+        type: 'HIPAA',
+        label: 'HIPAA (Signs BAA)',
+        status: 'Verified',
+        details: 'Signs Business Associate Agreement for Enterprise customers with Zero Data Retention',
+        verifiedAt: 'November 2025'
+      }
+    ],
+    auditorName: 'A-LIGN',
+    lastAuditDate: 'December 2025',
+    reportPeriod: 'January 1, 2025 – December 31, 2025',
+    minimumPlanForBAA: {
+      tierName: 'Usage-based / Enterprise',
+      priceNote: 'Usage-based API · BAA on Enterprise agreement',
+      isSelfServe: false,
+      baaIncluded: true,
+      details: 'Usage-based pay-as-you-go available for general API. HIPAA BAA execution requires OpenAI Enterprise contract with Zero Data Retention (ZDR) configuration.'
+    },
+    trustCenterUrl: 'https://trust.openai.com',
+    auditScopeSummary: 'Full scope evaluation of OpenAI API inference clusters, embeddings service, fine-tuning infrastructure, data privacy boundaries, and customer access management.',
+    securityPackDocuments: [
+      {
+        id: 'openai-soc2-type2',
+        title: 'OpenAI SOC 2 Type II Audit Report (A-LIGN)',
+        description: 'Comprehensive auditor examination covering API infrastructure and privacy controls.',
+        fileType: 'PDF (3.7 MB)',
+        requiresNDA: true
+      },
+      {
+        id: 'openai-baa-template',
+        title: 'OpenAI Business Associate Agreement (BAA) Template',
+        description: 'Standard HIPAA BAA agreement for covered entities.',
+        fileType: 'PDF (360 KB)',
+        requiresNDA: true
+      },
+      {
+        id: 'openai-security-whitepaper',
+        title: 'Enterprise Data Privacy & Security Architecture',
+        description: 'Technical guidance detailing Zero Data Retention (ZDR) and customer isolation.',
+        fileType: 'PDF (1.4 MB)',
+        requiresNDA: false
+      }
+    ],
+    dataResidency: ['US', 'EU regional data processing options'],
+    encryptionStandard: 'AES-256 at rest, TLS 1.2+ in transit',
+    penTestFrequency: 'Continuous red-teaming + annual third-party pen tests by Bishop Fox',
+    headquarters: 'San Francisco, CA, USA',
+    soc2Type: 'Type II',
+    isoStandards: [],
+    gdprDPAAvailable: true,
+    featured: true,
+    keyFeatures: ['Zero Data Retention (ZDR) policy on API endpoints', 'Enterprise Admin controls', 'Audit logging']
   },
   {
     id: 'stripe',
@@ -842,7 +1037,8 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001:2022'],
     gdprDPAAvailable: true,
-    featured: false
+    featured: false,
+    keyFeatures: ['PCI Level 1 Tokenization Vault', 'Radar ML fraud detection', 'Hardware Security Modules (HSM)', 'Restricted API keys']
   },
   {
     id: 'clerk',
@@ -850,7 +1046,7 @@ export const INITIAL_VENDORS: Vendor[] = [
     slug: 'clerk',
     tagline: 'Modern user authentication and user management for React and Next.js',
     description: 'Complete user management and auth suite purpose-built for modern web stacks with drop-in prebuilt components, session management, and B2B SaaS organizations.',
-    category: 'Authentication & IAM',
+    category: 'Auth & Identity',
     brandColor: '#6C47FF',
     logoBg: '#231557',
     logoTextColor: '#a78bfa',
@@ -864,29 +1060,29 @@ export const INITIAL_VENDORS: Vendor[] = [
         verifiedAt: 'October 2025'
       },
       {
-        type: 'HIPAA',
-        label: 'HIPAA (Signs BAA)',
-        status: 'Verified',
-        details: 'Executes HIPAA Business Associate Agreement on Enterprise plans',
-        verifiedAt: 'August 2025'
-      },
-      {
         type: 'GDPR',
         label: 'GDPR Compliant',
         status: 'Compliant',
         details: 'Self-serve Data Processing Addendum and EU data isolation options',
         verifiedAt: 'July 2025'
+      },
+      {
+        type: 'CCPA',
+        label: 'CCPA / CPRA',
+        status: 'Compliant',
+        details: 'Compliant with California Consumer Privacy Act and privacy regulations',
+        verifiedAt: 'August 2025'
       }
     ],
     auditorName: 'A-LIGN',
     lastAuditDate: 'October 2025',
     reportPeriod: 'October 1, 2024 – September 30, 2025',
     minimumPlanForBAA: {
-      tierName: 'Enterprise Plan',
-      priceNote: 'Custom annual contract (~$15,000/yr)',
+      tierName: 'Freemium / Usage-based',
+      priceNote: 'Free up to 10k MAU · Pro $25/mo · Enterprise',
       isSelfServe: false,
-      baaIncluded: true,
-      details: 'HIPAA BAA execution requires negotiation with Clerk Enterprise sales team. Pro plans ($25/mo) do not include HIPAA BAA eligibility.'
+      baaIncluded: false,
+      details: 'Freemium up to 10,000 monthly active users. SOC 2 Type II, GDPR, and CCPA compliant. Enterprise agreements available for dedicated data isolation.'
     },
     trustCenterUrl: 'https://clerk.com/docs/security/compliance',
     auditScopeSummary: 'Clerk Auth API, session cookie tokens, FIDO2/WebAuthn infrastructure, frontend SDK components, and multi-tenant user database.',
@@ -899,13 +1095,6 @@ export const INITIAL_VENDORS: Vendor[] = [
         requiresNDA: true
       },
       {
-        id: 'clerk-baa-template',
-        title: 'Clerk HIPAA Business Associate Agreement (BAA)',
-        description: 'Standard BAA template for covered entities and business associates.',
-        fileType: 'PDF (310 KB)',
-        requiresNDA: false
-      },
-      {
         id: 'clerk-pentest-summary',
         title: 'Annual Web Application Penetration Test',
         description: 'Third-party assessment by offensive security firm.',
@@ -913,14 +1102,15 @@ export const INITIAL_VENDORS: Vendor[] = [
         requiresNDA: true
       }
     ],
-    dataResidency: ['US (AWS us-east-1)', 'EU (AWS eu-central-1 Frankfurt)'],
-    encryptionStandard: 'AES-256 for credentials and tokens · TLS 1.3 enforced',
+    dataResidency: ['US', 'EU'],
+    encryptionStandard: 'AES-256, TLS 1.3',
     penTestFrequency: 'Annual independent grey-box penetration audit',
     headquarters: 'San Francisco, CA, USA',
     soc2Type: 'Type II',
     isoStandards: [],
     gdprDPAAvailable: true,
-    featured: true
+    featured: true,
+    keyFeatures: ['Passkeys', 'Social Logins', 'Organization multi-tenancy', 'User Impersonation audit trails']
   },
   {
     id: 'resend',
@@ -928,7 +1118,7 @@ export const INITIAL_VENDORS: Vendor[] = [
     slug: 'resend',
     tagline: 'Modern email API and transactional delivery platform for developers',
     description: 'Developer-first email platform with React Email templates, high inbox placement, webhooks, and analytics.',
-    category: 'Email & SMS',
+    category: 'Email & Messaging',
     brandColor: '#000000',
     logoBg: '#0f172a',
     logoTextColor: '#38bdf8',
@@ -953,11 +1143,11 @@ export const INITIAL_VENDORS: Vendor[] = [
     lastAuditDate: 'November 2025',
     reportPeriod: 'November 1, 2024 – October 31, 2025',
     minimumPlanForBAA: {
-      tierName: 'Enterprise Custom',
-      priceNote: 'Custom quote (HIPAA in pilot)',
-      isSelfServe: false,
+      tierName: 'Freemium / Usage-based',
+      priceNote: 'Free 3,000 emails/mo · Pro $20/mo',
+      isSelfServe: true,
       baaIncluded: false,
-      details: 'Resend is SOC 2 Type II certified. Standard transactional emails cannot process PHI without enterprise approval; contact sales for pilot BAA status.'
+      details: 'Freemium plan available with pay-as-you-go scaling. SOC 2 Type II certified. Standard transactional emails cannot process PHI without enterprise approval.'
     },
     trustCenterUrl: 'https://resend.com/security',
     auditScopeSummary: 'Resend mail pipeline, REST API gateways, AWS SES multi-region integrations, React Email rendering pipeline, and dashboard authentication.',
@@ -977,14 +1167,15 @@ export const INITIAL_VENDORS: Vendor[] = [
         requiresNDA: false
       }
     ],
-    dataResidency: ['US (Virginia us-east-1)', 'EU (Ireland eu-west-1)'],
-    encryptionStandard: 'Enforced TLS 1.3 for API and SMTP · AES-256 at rest',
+    dataResidency: ['US', 'EU'],
+    encryptionStandard: 'TLS 1.3 in transit, encrypted message logs',
     penTestFrequency: 'Annual third-party application penetration testing',
     headquarters: 'San Francisco, CA, USA',
     soc2Type: 'Type II',
     isoStandards: [],
     gdprDPAAvailable: true,
-    featured: false
+    featured: false,
+    keyFeatures: ['Dedicated IPs', 'DKIM/SPF auto-validation', 'Webhooks', 'Multi-domain management']
   },
   {
     id: 'mongodb-atlas',
@@ -1069,7 +1260,8 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001', 'ISO 27017', 'ISO 27018'],
     gdprDPAAvailable: true,
-    featured: true
+    featured: true,
+    keyFeatures: ['Client-Side Field Level Encryption (CSFLE)', 'Queryable Encryption', 'Auditing & RBAC', 'Private endpoints (AWS PrivateLink)']
   },
   {
     id: 'planetscale',
@@ -1140,7 +1332,8 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: [],
     gdprDPAAvailable: true,
-    featured: false
+    featured: false,
+    keyFeatures: ['Non-blocking schema migrations', 'Database branching', 'Automated daily backups', 'Private database connect']
   },
   {
     id: 'sentry',
@@ -1225,7 +1418,8 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001:2022'],
     gdprDPAAvailable: true,
-    featured: true
+    featured: true,
+    keyFeatures: ['Data scrubbing for PII', 'Relay on-premise proxy', 'Audit log streams', 'SOC 2 & HIPAA eligible']
   },
   {
     id: 'cloudflare',
@@ -1317,18 +1511,19 @@ export const INITIAL_VENDORS: Vendor[] = [
     soc2Type: 'Type II',
     isoStandards: ['ISO 27001', 'ISO 27018', 'ISO 27701'],
     gdprDPAAvailable: true,
-    featured: true
+    featured: true,
+    keyFeatures: ['Zero Trust network access (ZTNA)', 'Keyless SSL', 'Cloud WAF & DDoS mitigation', 'Post-quantum encryption']
   }
 ];
 
 export const CATEGORIES = [
   'All',
-  'Cloud & Hosting',
+  'Auth & Identity',
   'Databases & Storage',
-  'Email & SMS',
-  'Authentication & IAM',
+  'Email & Messaging',
   'Observability & Security',
-  'AI & Search',
+  'Cloud & Hosting',
+  'AI & Machine Learning',
   'Payments & Billing'
 ] as const;
 
@@ -1337,6 +1532,7 @@ export const COMPLIANCE_FRAMEWORKS = [
   { id: 'SOC2', label: 'SOC 2 Type II', description: 'Audited over time for Security & Availability' },
   { id: 'ISO27001', label: 'ISO 27001', description: 'Certified Information Security Management System' },
   { id: 'GDPR', label: 'GDPR Compliant', description: 'Valid Data Processing Addendum & EU safeguards' },
+  { id: 'CCPA', label: 'CCPA / CPRA', description: 'California Consumer Privacy Act verified compliance' },
   { id: 'PCIDSS', label: 'PCI-DSS', description: 'Payment card industry security compliance' },
   { id: 'FedRAMP', label: 'FedRAMP Moderate', description: 'US Federal government authorization' }
 ] as const;

@@ -121,25 +121,50 @@ export default function App() {
   const filteredVendors = useMemo(() => {
     return vendors
       .filter((v) => {
-        // Search query match (name, tagline, description, category, auditor)
+        // Search query match (name, tagline, description, category, auditor, features, encryption, residency, tier)
         if (searchQuery.trim()) {
           const q = searchQuery.toLowerCase().trim();
           const matchesName = v.name.toLowerCase().includes(q);
           const matchesCategory = v.category.toLowerCase().includes(q);
           const matchesTagline = v.tagline.toLowerCase().includes(q);
+          const matchesDescription = v.description.toLowerCase().includes(q);
           const matchesAuditor = v.auditorName.toLowerCase().includes(q);
           const matchesBadge = v.complianceBadges.some((b) =>
-            b.label.toLowerCase().includes(q)
+            b.label.toLowerCase().includes(q) || b.details.toLowerCase().includes(q)
           );
+          const matchesFeatures = v.keyFeatures?.some((f) =>
+            f.toLowerCase().includes(q)
+          );
+          const matchesEncryption = v.encryptionStandard.toLowerCase().includes(q);
+          const matchesDataResidency = v.dataResidency.some((r) =>
+            r.toLowerCase().includes(q)
+          );
+          const matchesPricingTier = v.minimumPlanForBAA.tierName.toLowerCase().includes(q);
 
-          if (!matchesName && !matchesCategory && !matchesTagline && !matchesAuditor && !matchesBadge) {
+          if (
+            !matchesName &&
+            !matchesCategory &&
+            !matchesTagline &&
+            !matchesDescription &&
+            !matchesAuditor &&
+            !matchesBadge &&
+            !matchesFeatures &&
+            !matchesEncryption &&
+            !matchesDataResidency &&
+            !matchesPricingTier
+          ) {
             return false;
           }
         }
 
-        // Category match
+        // Category match with aliases
         if (selectedCategory !== 'All') {
-          if (v.category !== selectedCategory) {
+          const matchesCategory =
+            v.category === selectedCategory ||
+            (selectedCategory === 'Auth & Identity' && (v.category === 'Authentication & IAM' || v.category === 'Auth & Identity')) ||
+            (selectedCategory === 'Email & Messaging' && (v.category === 'Email & SMS' || v.category === 'Email & Messaging')) ||
+            (selectedCategory === 'AI & Machine Learning' && (v.category === 'AI & Search' || v.category === 'AI & Machine Learning'));
+          if (!matchesCategory) {
             return false;
           }
         }
@@ -265,7 +290,16 @@ export default function App() {
           onSearchChange={setSearchQuery}
           totalVendors={vendors.length}
           onSelectQuickTag={(tag) => {
-            if (['Cloud & Hosting', 'Databases & Storage', 'Email & SMS'].includes(tag)) {
+            const categories = [
+              'Auth & Identity',
+              'Databases & Storage',
+              'Email & Messaging',
+              'Observability & Security',
+              'Cloud & Hosting',
+              'AI & Machine Learning',
+              'Payments & Billing'
+            ];
+            if (categories.includes(tag)) {
               setSelectedCategory(tag);
             } else {
               setSearchQuery(tag);

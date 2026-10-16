@@ -313,6 +313,19 @@ export const AuditModal: React.FC<AuditModalProps> = ({
                   <span className="font-semibold text-slate-800">Available Data Regions: </span>
                   <span className="text-slate-600">{vendor.dataResidency.join(', ')}</span>
                 </div>
+
+                {vendor.keyFeatures && vendor.keyFeatures.length > 0 && (
+                  <div className="pt-2 border-t border-slate-200 text-xs">
+                    <span className="font-semibold text-slate-800">Key Security & Compliance Features: </span>
+                    <div className="flex flex-wrap gap-1.5 mt-1.5">
+                      {vendor.keyFeatures.map((feat) => (
+                        <span key={feat} className="bg-white border border-slate-200 px-2 py-0.5 rounded-md font-medium text-slate-700">
+                          {feat}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* External Trust Link Button */}

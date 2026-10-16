@@ -85,6 +85,20 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="mt-3 flex items-center justify-center gap-2 flex-wrap text-xs text-slate-300">
               <span className="text-slate-400">Popular searches:</span>
               <button
+                onClick={() => onSelectQuickTag('Okta')}
+                className="hover:text-white underline underline-offset-2 transition-colors cursor-pointer"
+              >
+                Okta
+              </button>
+              <span>·</span>
+              <button
+                onClick={() => onSelectQuickTag('OpenAI')}
+                className="hover:text-white underline underline-offset-2 transition-colors cursor-pointer"
+              >
+                OpenAI
+              </button>
+              <span>·</span>
+              <button
                 onClick={() => onSelectQuickTag('Supabase')}
                 className="hover:text-white underline underline-offset-2 transition-colors cursor-pointer"
               >
@@ -92,24 +106,24 @@ export const Hero: React.FC<HeroProps> = ({
               </button>
               <span>·</span>
               <button
-                onClick={() => onSelectQuickTag('Email & SMS')}
+                onClick={() => onSelectQuickTag('Datadog')}
                 className="hover:text-white underline underline-offset-2 transition-colors cursor-pointer"
               >
-                Email & SMS
+                Datadog
               </button>
               <span>·</span>
               <button
-                onClick={() => onSelectQuickTag('Databases')}
+                onClick={() => onSelectQuickTag('Auth & Identity')}
                 className="hover:text-white underline underline-offset-2 transition-colors cursor-pointer"
               >
-                Databases
+                Auth & Identity
               </button>
               <span>·</span>
               <button
-                onClick={() => onSelectQuickTag('Cloud & Hosting')}
+                onClick={() => onSelectQuickTag('AI & Machine Learning')}
                 className="hover:text-white underline underline-offset-2 transition-colors cursor-pointer"
               >
-                Cloud & Hosting
+                AI & ML
               </button>
             </div>
           )}
