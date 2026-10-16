@@ -1,0 +1,6 @@
+{
+  "name": "TrustRoster - B2B Compliance & Security Directory",
+  "description": "Find verified, compliance-ready B2B vendors. Search 500+ cloud, developer, and business tools verified for HIPAA, SOC 2 Type II, ISO 27001, and GDPR with audit details and minimum plan requirements.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
