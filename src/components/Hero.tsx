@@ -36,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Subtle Institutional Kicker */}
         <div className="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full bg-blue-950/80 border border-blue-800/60 text-xs font-medium text-blue-200">
           <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
-          <span>Independent Security & Attestation Registry</span>
+          <span>{totalVendors} Verified B2B Tools Indexed</span>
         </div>
 
         {/* Clear Headline */}
@@ -75,7 +75,7 @@ export const Hero: React.FC<HeroProps> = ({
             )}
             <div className="pr-1 hidden sm:block">
               <span className="text-xs text-slate-600 font-mono px-2 py-1 bg-slate-100 rounded-md">
-                {totalVendors} indexed
+                {totalVendors} verified vendors
               </span>
             </div>
           </div>

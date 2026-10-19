@@ -3,9 +3,10 @@ import { ShieldCheck, PlusCircle, CheckCircle, ArrowRight } from 'lucide-react';
 
 interface LeadBannerProps {
   onOpenSubmitModal: () => void;
+  totalVendors?: number;
 }
 
-export const LeadBanner: React.FC<LeadBannerProps> = ({ onOpenSubmitModal }) => {
+export const LeadBanner: React.FC<LeadBannerProps> = ({ onOpenSubmitModal, totalVendors }) => {
   return (
     <section className="bg-slate-900 text-white rounded-2xl p-8 sm:p-10 border border-slate-800 shadow-xl relative overflow-hidden my-12">
       {/* Background architectural accents */}
@@ -25,7 +26,7 @@ export const LeadBanner: React.FC<LeadBannerProps> = ({ onOpenSubmitModal }) => 
       <div className="relative z-10 max-w-3xl mx-auto text-center space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/90 border border-blue-800/60 text-xs font-semibold text-blue-300">
           <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
-          <span>Vendor Directory Verification Program</span>
+          <span>{totalVendors ? `${totalVendors} Verified Vendors Indexed` : 'Vendor Directory Verification Program'}</span>
         </div>
 
         <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">

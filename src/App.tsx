@@ -418,7 +418,7 @@ export default function App() {
           <StandardsExplainer onSelectFramework={handleSelectFrameworkFromStandards} />
 
           {/* Lead Generation / List Your Tool Banner */}
-          <LeadBanner onOpenSubmitModal={() => setIsSubmitModalOpen(true)} />
+          <LeadBanner onOpenSubmitModal={() => setIsSubmitModalOpen(true)} totalVendors={vendors.length} />
         </div>
       </main>
 
