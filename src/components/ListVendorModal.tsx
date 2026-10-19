@@ -186,8 +186,8 @@ export const ListVendorModal: React.FC<ListVendorModalProps> = ({
       keyFeatures: ['Audit Logging', 'Role-Based Access Control (RBAC)', 'Data Encryption', 'Automated Backups'],
     };
 
-    // Web3Forms API Integration
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '4f69dacb-506a-4c33-a7f0-beb376725ab9';
+    // Web3Forms API Integration (hardcoded access key)
+    const accessKey = '4f69dacb-506a-4c33-a7f0-beb376725ab9';
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
